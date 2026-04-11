@@ -1,59 +1,69 @@
-"use client"
+"use client";
 
-import { useRef, useEffect, useState } from "react"
-import { ArrowUpRight } from "lucide-react"
+import { useRef, useEffect, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     id: 1,
     title: "Fintech Dashboard",
     category: "Web Application",
-    description: "A comprehensive financial analytics platform with real-time data visualization.",
+    description:
+      "A comprehensive financial analytics platform with real-time data visualization.",
     color: "from-blue-500/20 to-cyan-500/20",
   },
   {
     id: 2,
     title: "E-Commerce Platform",
     category: "Full Stack Development",
-    description: "Modern shopping experience with seamless checkout and inventory management.",
+    description:
+      "Modern shopping experience with seamless checkout and inventory management.",
     color: "from-amber-500/20 to-orange-500/20",
   },
   {
     id: 3,
     title: "SaaS Marketing Site",
     category: "Website Design",
-    description: "High-converting landing pages with stunning animations and micro-interactions.",
+    description:
+      "High-converting landing pages with stunning animations and micro-interactions.",
     color: "from-emerald-500/20 to-teal-500/20",
   },
   {
     id: 4,
     title: "AI Content Studio",
     category: "Product Design",
-    description: "Intuitive interface for AI-powered content generation and management.",
+    description:
+      "Intuitive interface for AI-powered content generation and management.",
     color: "from-rose-500/20 to-pink-500/20",
   },
-]
+];
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
-    )
+      { threshold: 0.2 },
+    );
 
     if (cardRef.current) {
-      observer.observe(cardRef.current)
+      observer.observe(cardRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -97,29 +107,29 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export function ProjectsSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
-    )
+      { threshold: 0.1 },
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="projects" ref={sectionRef} className="py-32 bg-background">
@@ -141,7 +151,8 @@ export function ProjectsSection() {
             <span className="text-muted-foreground">make an impact</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-            A showcase of our recent work across various industries, each crafted with precision and purpose.
+            A showcase of our recent work across various industries, each
+            crafted with precision and purpose.
           </p>
         </div>
 
@@ -167,5 +178,5 @@ export function ProjectsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

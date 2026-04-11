@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const footerLinks = {
   company: [
@@ -19,7 +19,7 @@ const footerLinks = {
     { label: "Dribbble", href: "#" },
     { label: "GitHub", href: "#" },
   ],
-}
+};
 
 export function Footer() {
   return (
@@ -28,11 +28,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="text-xl font-semibold tracking-tight text-foreground">
+            <Link
+              href="/"
+              className="text-xl font-semibold tracking-tight text-foreground"
+            >
               Frunze Solutions
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              A premium web development studio creating exceptional digital experiences.
+              A premium web development studio creating exceptional digital
+              experiences.
             </p>
           </div>
 
@@ -94,15 +98,21 @@ export function Footer() {
             © {new Date().getFullYear()} Frunze Solutions. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               Privacy Policy
             </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
               Terms of Service
             </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

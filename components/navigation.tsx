@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#projects", label: "Projects" },
   { href: "#services", label: "Services" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
-]
+];
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -30,7 +30,7 @@ export function Navigation() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -80,7 +80,7 @@ export function Navigation() {
         <div
           className={cn(
             "md:hidden overflow-hidden transition-all duration-500 ease-in-out",
-            isMobileMenuOpen ? "max-h-80 pb-6" : "max-h-0"
+            isMobileMenuOpen ? "max-h-80 pb-6" : "max-h-0",
           )}
         >
           <div className="flex flex-col gap-4 pt-4">
@@ -105,5 +105,5 @@ export function Navigation() {
         </div>
       </nav>
     </header>
-  )
+  );
 }

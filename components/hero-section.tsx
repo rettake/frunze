@@ -1,28 +1,31 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import Link from "next/link"
-import { ArrowDown } from "lucide-react"
+import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { ArrowDown } from "lucide-react";
 
 export function HeroSection() {
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const subtitleRef = useRef<HTMLParagraphElement>(null)
-  const ctaRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const elements = [titleRef.current, subtitleRef.current, ctaRef.current]
+    const elements = [titleRef.current, subtitleRef.current, ctaRef.current];
     elements.forEach((el, index) => {
       if (el) {
-        el.style.opacity = "0"
-        el.style.transform = "translateY(40px)"
-        setTimeout(() => {
-          el.style.transition = "all 1s cubic-bezier(0.16, 1, 0.3, 1)"
-          el.style.opacity = "1"
-          el.style.transform = "translateY(0)"
-        }, 200 + index * 200)
+        el.style.opacity = "0";
+        el.style.transform = "translateY(40px)";
+        setTimeout(
+          () => {
+            el.style.transition = "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          },
+          200 + index * 200,
+        );
       }
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -31,11 +34,14 @@ export function HeroSection() {
 
       {/* Animated grid lines */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
                            linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: '80px 80px'
-        }} />
+            backgroundSize: "80px 80px",
+          }}
+        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
@@ -68,7 +74,10 @@ export function HeroSection() {
         </p>
 
         {/* CTA Buttons */}
-        <div ref={ctaRef} className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div
+          ref={ctaRef}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
           <Link
             href="#projects"
             className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
@@ -106,5 +115,5 @@ export function HeroSection() {
         <ArrowDown className="w-5 h-5 text-muted-foreground" />
       </div>
     </section>
-  )
+  );
 }

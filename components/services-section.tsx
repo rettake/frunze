@@ -1,61 +1,67 @@
-"use client"
+"use client";
 
-import { useRef, useEffect, useState } from "react"
-import { Code2, Palette, Gauge, Sparkles, Globe, Shield } from "lucide-react"
+import { useRef, useEffect, useState } from "react";
+import { Code2, Palette, Gauge, Sparkles, Globe, Shield } from "lucide-react";
 
 const services = [
   {
     icon: Code2,
     title: "Web Development",
-    description: "Custom web applications built with modern technologies. React, Next.js, and beyond.",
+    description:
+      "Custom web applications built with modern technologies. React, Next.js, and beyond.",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Beautiful interfaces that users love. Design systems and prototypes included.",
+    description:
+      "Beautiful interfaces that users love. Design systems and prototypes included.",
   },
   {
     icon: Gauge,
     title: "Performance",
-    description: "Lightning-fast loading times and optimized user experiences across all devices.",
+    description:
+      "Lightning-fast loading times and optimized user experiences across all devices.",
   },
   {
     icon: Sparkles,
     title: "Animations",
-    description: "Engaging micro-interactions and smooth transitions that delight users.",
+    description:
+      "Engaging micro-interactions and smooth transitions that delight users.",
   },
   {
     icon: Globe,
     title: "E-Commerce",
-    description: "Scalable online stores with seamless checkout and inventory management.",
+    description:
+      "Scalable online stores with seamless checkout and inventory management.",
   },
   {
     icon: Shield,
     title: "Security",
-    description: "Enterprise-grade security practices to protect your data and users.",
+    description:
+      "Enterprise-grade security practices to protect your data and users.",
   },
-]
+];
 
 export function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
-    )
+      { threshold: 0.1 },
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="services" ref={sectionRef} className="py-32 bg-card">
@@ -111,5 +117,5 @@ export function ServicesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

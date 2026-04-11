@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { useRef, useEffect, useState } from "react"
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react"
+import { useRef, useEffect, useState } from "react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
 export function ContactSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
-    )
+      { threshold: 0.1 },
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="contact" ref={sectionRef} className="py-32 bg-card">
@@ -45,8 +45,8 @@ export function ContactSection() {
               <span className="text-muted-foreground">something great</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground max-w-md">
-              Have a project in mind? We would love to hear about it. Drop us a line
-              and let's discuss how we can help.
+              Have a project in mind? We would love to hear about it. Drop us a
+              line and let's discuss how we can help.
             </p>
 
             {/* Contact Info */}
@@ -92,7 +92,10 @@ export function ContactSection() {
             <form className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     First Name
                   </label>
                   <input
@@ -103,7 +106,10 @@ export function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Last Name
                   </label>
                   <input
@@ -116,7 +122,10 @@ export function ContactSection() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -128,7 +137,10 @@ export function ContactSection() {
               </div>
 
               <div>
-                <label htmlFor="project" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="project"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Project Type
                 </label>
                 <select
@@ -144,7 +156,10 @@ export function ContactSection() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -167,5 +182,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
