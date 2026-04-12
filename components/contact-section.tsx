@@ -28,7 +28,7 @@ export function ContactSection() {
     <section id="contact" ref={sectionRef} className="py-32 bg-card">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left Column - Content */}
+          {/* Левая колонка — контент */}
           <div
             className="transition-all duration-1000"
             style={{
@@ -37,19 +37,19 @@ export function ContactSection() {
             }}
           >
             <span className="text-sm uppercase tracking-widest text-muted-foreground">
-              Contact
+              Контакты
             </span>
             <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-tight">
-              {"Let's create"}
+              Давайте создадим
               <br />
-              <span className="text-muted-foreground">something great</span>
+              <span className="text-muted-foreground">что-то крутое</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground max-w-md">
-              Have a project in mind? We would love to hear about it. Drop us a
-              line and let's discuss how we can help.
+              Есть идея проекта? Мы будем рады обсудить её. Напишите нам, и
+              давайте разберёмся, как мы можем помочь.
             </p>
 
-            {/* Contact Info */}
+            {/* Контактная информация */}
             <div className="mt-12 space-y-6">
               <div className="flex items-center gap-4">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary">
@@ -65,7 +65,7 @@ export function ContactSection() {
                   <Phone className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
+                  <p className="text-sm text-muted-foreground">Телефон</p>
                   <p className="text-foreground">+1 (555) 123-4567</p>
                 </div>
               </div>
@@ -74,14 +74,14 @@ export function ContactSection() {
                   <MapPin className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-foreground">San Francisco, CA</p>
+                  <p className="text-sm text-muted-foreground">Локация</p>
+                  <p className="text-foreground">Сан-Франциско, Калифорния</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Form */}
+          {/* Правая колонка — форма */}
           <div
             className="transition-all duration-1000 delay-200"
             style={{
@@ -96,13 +96,13 @@ export function ContactSection() {
                     htmlFor="firstName"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    First Name
+                    Имя
                   </label>
                   <input
                     type="text"
                     id="firstName"
                     className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
-                    placeholder="John"
+                    placeholder="Иван"
                   />
                 </div>
                 <div>
@@ -110,13 +110,13 @@ export function ContactSection() {
                     htmlFor="lastName"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Last Name
+                    Фамилия
                   </label>
                   <input
                     type="text"
                     id="lastName"
                     className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
-                    placeholder="Doe"
+                    placeholder="Иванов"
                   />
                 </div>
               </div>
@@ -132,7 +132,7 @@ export function ContactSection() {
                   type="email"
                   id="email"
                   className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
-                  placeholder="john@example.com"
+                  placeholder="ivan@example.com"
                 />
               </div>
 
@@ -141,17 +141,17 @@ export function ContactSection() {
                   htmlFor="project"
                   className="block text-sm font-medium text-foreground mb-2"
                 >
-                  Project Type
+                  Тип проекта
                 </label>
                 <select
                   id="project"
                   className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
                 >
-                  <option value="">Select a project type</option>
-                  <option value="website">Website Design</option>
-                  <option value="webapp">Web Application</option>
-                  <option value="ecommerce">E-Commerce</option>
-                  <option value="other">Other</option>
+                  <option value="">Выберите тип проекта</option>
+                  <option value="website">Дизайн сайта</option>
+                  <option value="webapp">Веб-приложение</option>
+                  <option value="ecommerce">Интернет-магазин</option>
+                  <option value="other">Другое</option>
                 </select>
               </div>
 
@@ -160,13 +160,13 @@ export function ContactSection() {
                   htmlFor="message"
                   className="block text-sm font-medium text-foreground mb-2"
                 >
-                  Message
+                  Сообщение
                 </label>
                 <textarea
                   id="message"
                   rows={5}
                   className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder="Расскажите о вашем проекте..."
                 />
               </div>
 
@@ -174,7 +174,7 @@ export function ContactSection() {
                 type="submit"
                 className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all duration-300 hover:opacity-90"
               >
-                Send Message
+                Отправить сообщение
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </form>

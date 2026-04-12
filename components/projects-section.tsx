@@ -2,41 +2,52 @@
 
 import { useRef, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+
+import umca from "@/assets/images/umca.png";
+import beteco from "@/assets/images/beteco.png"
+import easect from "@/assets/images/easect.png";
+import dashboard from "@/assets/images/dashboard.png";
 
 const projects = [
   {
     id: 1,
-    title: "Fintech Dashboard",
-    category: "Web Application",
+    title: "Финтех дашборд",
+    category: "Веб-приложение",
     description:
-      "A comprehensive financial analytics platform with real-time data visualization.",
+      "Комплексная платформа финансовой аналитики с визуализацией данных в реальном времени.",
     color: "from-blue-500/20 to-cyan-500/20",
+    image: umca,
   },
   {
     id: 2,
-    title: "E-Commerce Platform",
-    category: "Full Stack Development",
+    title: "E-commerce платформа",
+    category: "Fullstack разработка",
     description:
-      "Modern shopping experience with seamless checkout and inventory management.",
+      "Современный опыт онлайн-покупок с удобным оформлением заказов и управлением складом.",
     color: "from-amber-500/20 to-orange-500/20",
+    image: beteco,
   },
   {
     id: 3,
-    title: "SaaS Marketing Site",
-    category: "Website Design",
+    title: "Маркетинговый сайт SaaS",
+    category: "Веб-дизайн",
     description:
-      "High-converting landing pages with stunning animations and micro-interactions.",
+      "Лендинги с высокой конверсией, продуманной анимацией и микро-взаимодействиями.",
     color: "from-emerald-500/20 to-teal-500/20",
+    image: dashboard,
   },
   {
     id: 4,
-    title: "AI Content Studio",
-    category: "Product Design",
+    title: "AI студия контента",
+    category: "Дизайн продукта",
     description:
-      "Intuitive interface for AI-powered content generation and management.",
+      "Интуитивный интерфейс для генерации и управления контентом с помощью AI.",
     color: "from-rose-500/20 to-pink-500/20",
+    image: easect,
   },
 ];
+
 
 function ProjectCard({
   project,
@@ -50,59 +61,66 @@ function ProjectCard({
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
+      ([entry]) => entry.isIntersecting && setIsVisible(true),
       { threshold: 0.2 },
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
+    if (cardRef.current) observer.observe(cardRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <div
       ref={cardRef}
-      className="group relative overflow-hidden rounded-3xl bg-card border border-border transition-all duration-700"
+      className="group relative overflow-hidden rounded-3xl border border-border bg-card transition-all duration-700 hover:shadow-xl"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(60px)",
         transitionDelay: `${index * 100}ms`,
       }}
     >
-      {/* Gradient Background */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-      />
+      {/* Image */}
+      <div className="relative aspect-[4/3] overflow-hidden">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <div className="w-full h-full bg-secondary/50" />
+        )}
 
-      {/* Project Image Placeholder */}
-      <div className="relative aspect-[4/3] bg-secondary/50 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-2/3 h-2/3 rounded-2xl bg-gradient-to-br from-secondary to-muted/50 transition-transform duration-700 group-hover:scale-110" />
-        </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        {/* Gradient hover */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500`}
+        />
       </div>
 
       {/* Content */}
-      <div className="relative p-8">
+      <div className="relative p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
             <span className="text-xs uppercase tracking-wider text-muted-foreground">
               {project.category}
             </span>
-            <h3 className="mt-2 text-2xl font-semibold text-foreground">
+
+            <h3 className="mt-2 text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
               {project.title}
             </h3>
-            <p className="mt-3 text-muted-foreground leading-relaxed">
+
+            <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
               {project.description}
             </p>
           </div>
-          <div className="flex-shrink-0 p-3 rounded-full border border-border bg-background/50 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
-            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary-foreground transition-colors duration-300" />
+
+          <div className="flex-shrink-0 p-2 rounded-full border border-border bg-background/60 backdrop-blur group-hover:bg-primary group-hover:border-primary transition-all duration-300">
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
           </div>
         </div>
       </div>
@@ -134,7 +152,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" ref={sectionRef} className="py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Заголовок секции */}
         <div
           className="max-w-3xl transition-all duration-1000"
           style={{
@@ -143,27 +161,27 @@ export function ProjectsSection() {
           }}
         >
           <span className="text-sm uppercase tracking-widest text-muted-foreground">
-            Selected Work
+            Избранные проекты
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-tight">
-            Projects that
+            Проекты, которые
             <br />
-            <span className="text-muted-foreground">make an impact</span>
+            <span className="text-muted-foreground">приносят результат</span>
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-            A showcase of our recent work across various industries, each
-            crafted with precision and purpose.
+            Подборка наших недавних работ в разных индустриях, каждая из которых
+            создана с вниманием к деталям и бизнес-целям.
           </p>
         </div>
 
-        {/* Projects Grid */}
+        {/* Сетка проектов */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        {/* View All Button */}
+        {/* Кнопка */}
         <div
           className="mt-16 text-center transition-all duration-1000 delay-500"
           style={{
@@ -172,7 +190,7 @@ export function ProjectsSection() {
           }}
         >
           <button className="inline-flex items-center gap-2 text-foreground font-medium group">
-            View All Projects
+            Все проекты
             <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>

@@ -6,39 +6,39 @@ import { Code2, Palette, Gauge, Sparkles, Globe, Shield } from "lucide-react";
 const services = [
   {
     icon: Code2,
-    title: "Web Development",
+    title: "Веб-разработка",
     description:
-      "Custom web applications built with modern technologies. React, Next.js, and beyond.",
+      "Кастомные веб-приложения на современных технологиях: React, Next.js и другие.",
   },
   {
     icon: Palette,
-    title: "UI/UX Design",
+    title: "UI/UX дизайн",
     description:
-      "Beautiful interfaces that users love. Design systems and prototypes included.",
+      "Красивые и удобные интерфейсы. Включая дизайн-системы и прототипы.",
   },
   {
     icon: Gauge,
-    title: "Performance",
+    title: "Производительность",
     description:
-      "Lightning-fast loading times and optimized user experiences across all devices.",
+      "Молниеносная загрузка и оптимизированный пользовательский опыт на всех устройствах.",
   },
   {
     icon: Sparkles,
-    title: "Animations",
+    title: "Анимации",
     description:
-      "Engaging micro-interactions and smooth transitions that delight users.",
+      "Продуманные микро-взаимодействия и плавные анимации, улучшающие UX.",
   },
   {
     icon: Globe,
-    title: "E-Commerce",
+    title: "E-commerce",
     description:
-      "Scalable online stores with seamless checkout and inventory management.",
+      "Масштабируемые интернет-магазины с удобной оплатой и управлением товарами.",
   },
   {
     icon: Shield,
-    title: "Security",
+    title: "Безопасность",
     description:
-      "Enterprise-grade security practices to protect your data and users.",
+      "Практики уровня enterprise для защиты данных и пользователей.",
   },
 ];
 
@@ -66,7 +66,7 @@ export function ServicesSection() {
   return (
     <section id="services" ref={sectionRef} className="py-32 bg-card">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Заголовок секции */}
         <div
           className="text-center max-w-3xl mx-auto transition-all duration-1000"
           style={{
@@ -75,17 +75,17 @@ export function ServicesSection() {
           }}
         >
           <span className="text-sm uppercase tracking-widest text-muted-foreground">
-            What We Do
+            Что мы делаем
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground">
-            Services
+            Услуги
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Comprehensive solutions to transform your digital presence
+            Комплексные решения для развития вашего цифрового продукта
           </p>
         </div>
 
-        {/* Services Grid */}
+        {/* Сетка услуг */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-3xl overflow-hidden">
           {services.map((service, index) => (
             <div
@@ -97,12 +97,12 @@ export function ServicesSection() {
                 transitionDelay: `${index * 100}ms`,
               }}
             >
-              {/* Icon */}
+              {/* Иконка */}
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-secondary group-hover:bg-primary transition-colors duration-500">
                 <service.icon className="w-6 h-6 text-foreground group-hover:text-primary-foreground transition-colors duration-500" />
               </div>
 
-              {/* Content */}
+              {/* Контент */}
               <h3 className="mt-6 text-xl font-semibold text-foreground">
                 {service.title}
               </h3>
@@ -110,7 +110,7 @@ export function ServicesSection() {
                 {service.description}
               </p>
 
-              {/* Hover line */}
+              {/* Линия при наведении */}
               <div className="absolute bottom-0 left-10 right-10 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </div>
           ))}

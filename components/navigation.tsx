@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#projects", label: "Projects" },
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "#projects", label: "Проекты" },
+  { href: "#services", label: "Услуги" },
+  { href: "#about", label: "О нас" },
+  { href: "#contact", label: "Контакты" },
 ];
 
 export function Navigation() {
@@ -35,7 +35,7 @@ export function Navigation() {
     >
       <nav className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
+          {/* Логотип */}
           <Link
             href="/"
             className="text-xl font-semibold tracking-tight text-foreground"
@@ -43,7 +43,7 @@ export function Navigation() {
             Frunze Solutions
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Десктопная навигация */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
@@ -56,27 +56,27 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA кнопка */}
           <div className="hidden md:block">
             <Link
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-all duration-300 hover:opacity-90"
             >
-              Start a Project
+              Начать проект
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Кнопка мобильного меню */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
+            aria-label="Открыть меню"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Мобильное меню */}
         <div
           className={cn(
             "md:hidden overflow-hidden transition-all duration-500 ease-in-out",
@@ -99,7 +99,7 @@ export function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground mt-4 w-fit"
             >
-              Start a Project
+              Начать проект
             </Link>
           </div>
         </div>

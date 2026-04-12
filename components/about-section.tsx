@@ -3,10 +3,10 @@
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "8+", label: "Years Experience" },
-  { value: "15", label: "Team Members" },
+  { value: "150+", label: "Проектов реализовано" },
+  { value: "50+", label: "Довольных клиентов" },
+  { value: "8+", label: "Лет опыта" },
+  { value: "15", label: "Человек в команде" },
 ];
 
 function CountUpNumber({
@@ -81,7 +81,7 @@ export function AboutSection() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left Column - Content */}
+          {/* Левая колонка — контент */}
           <div
             className="transition-all duration-1000"
             style={{
@@ -90,29 +90,30 @@ export function AboutSection() {
             }}
           >
             <span className="text-sm uppercase tracking-widest text-muted-foreground">
-              About Us
+              О нас
             </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-foreground leading-tight">
-              Building the future
+              Создаём будущее
               <br />
-              <span className="text-muted-foreground">of the web</span>
+              <span className="text-muted-foreground">веб-разработки</span>
             </h2>
             <div className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                We are a collective of designers, developers, and strategists
-                passionate about creating digital products that matter. Our
-                approach combines creative excellence with technical precision.
+                Мы — команда дизайнеров, разработчиков и стратегов, увлечённых
+                созданием цифровых продуктов, которые действительно имеют
+                значение. Наш подход объединяет креативность и техническую
+                точность.
               </p>
               <p>
-                From startups to Fortune 500 companies, we partner with
-                ambitious teams to build products that users love and businesses
-                depend on.
+                От стартапов до крупных компаний — мы сотрудничаем с
+                амбициозными командами, создавая продукты, которые любят
+                пользователи и на которые опирается бизнес.
               </p>
             </div>
 
-            {/* Values */}
+            {/* Ценности */}
             <div className="mt-12 flex flex-wrap gap-3">
-              {["Innovation", "Quality", "Collaboration", "Transparency"].map(
+              {["Инновации", "Качество", "Сотрудничество", "Прозрачность"].map(
                 (value) => (
                   <span
                     key={value}
@@ -125,7 +126,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right Column - Stats */}
+          {/* Правая колонка — статистика */}
           <div
             className="transition-all duration-1000 delay-300"
             style={{
@@ -154,34 +155,34 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Marquee */}
+        {/* Бегущая строка */}
         <div className="mt-32 relative overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
-          <div className="flex animate-marquee">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex shrink-0">
-                {[
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "Tailwind",
-                  "Framer Motion",
-                  "Vercel",
-                  "Figma",
-                  "Node.js",
-                ].map((tech) => (
-                  <span
-                    key={`${tech}-${i}`}
-                    className="mx-8 text-6xl md:text-8xl font-semibold text-muted/30 whitespace-nowrap"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
+          {/*<div className="flex animate-marquee">*/}
+          {/*  {[...Array(2)].map((_, i) => (*/}
+          {/*    <div key={i} className="flex shrink-0">*/}
+          {/*      {[*/}
+          {/*        "React",*/}
+          {/*        "Next.js",*/}
+          {/*        "TypeScript",*/}
+          {/*        "Tailwind",*/}
+          {/*        "Framer Motion",*/}
+          {/*        "Vercel",*/}
+          {/*        "Figma",*/}
+          {/*        "Node.js",*/}
+          {/*      ].map((tech) => (*/}
+          {/*        <span*/}
+          {/*          key={`${tech}-${i}`}*/}
+          {/*          className="mx-8 text-6xl md:text-8xl font-semibold text-muted/30 whitespace-nowrap"*/}
+          {/*        >*/}
+          {/*          {tech}*/}
+          {/*        </span>*/}
+          {/*      ))}*/}
+          {/*    </div>*/}
+          {/*  ))}*/}
+          {/*</div>*/}
         </div>
       </div>
 

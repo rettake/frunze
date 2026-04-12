@@ -2,16 +2,16 @@ import Link from "next/link";
 
 const footerLinks = {
   company: [
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Services", href: "#services" },
-    { label: "Careers", href: "#" },
+    { label: "О нас", href: "#about" },
+    { label: "Проекты", href: "#projects" },
+    { label: "Услуги", href: "#services" },
+    { label: "Карьера", href: "#" },
   ],
   resources: [
-    { label: "Blog", href: "#" },
-    { label: "Case Studies", href: "#" },
-    { label: "FAQs", href: "#" },
-    { label: "Support", href: "#" },
+    { label: "Блог", href: "#" },
+    { label: "Кейсы", href: "#" },
+    { label: "Вопросы и ответы", href: "#" },
+    { label: "Поддержка", href: "#" },
   ],
   social: [
     { label: "Twitter", href: "#" },
@@ -26,7 +26,7 @@ export function Footer() {
     <footer className="bg-background border-t border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
+          {/* Бренд */}
           <div className="lg:col-span-1">
             <Link
               href="/"
@@ -35,14 +35,14 @@ export function Footer() {
               Frunze Solutions
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              A premium web development studio creating exceptional digital
-              experiences.
+              Премиальная веб-студия, создающая выдающиеся цифровые продукты и
+              пользовательский опыт.
             </p>
           </div>
 
-          {/* Company */}
+          {/* Компания */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Company</h3>
+            <h3 className="text-sm font-semibold text-foreground">Компания</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -57,9 +57,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Ресурсы */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Resources</h3>
+            <h3 className="text-sm font-semibold text-foreground">Ресурсы</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
@@ -74,9 +74,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Соцсети */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Connect</h3>
+            <h3 className="text-sm font-semibold text-foreground">Связаться</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.social.map((link) => (
                 <li key={link.label}>
@@ -92,23 +92,23 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Нижняя часть */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Frunze Solutions. All rights reserved.
+            © {new Date().getFullYear()} Frunze Solutions. Все права защищены.
           </p>
           <div className="flex items-center gap-6">
             <Link
               href="#"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
-              Privacy Policy
+              Политика конфиденциальности
             </Link>
             <Link
               href="#"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
-              Terms of Service
+              Условия использования
             </Link>
           </div>
         </div>
