@@ -2,10 +2,15 @@
 
 import { useRef, useEffect, useState } from "react";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const form = useRef<HTMLFormElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendSuccess, setSendSuccess] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +28,35 @@ export function ContactSection() {
 
     return () => observer.disconnect();
   }, []);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+    setSendError(false);
+    setSendSuccess(false);
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+            "service_nhdke2d", // Замените на ваш Service ID
+          "template_o9zfz4k", // Замените на ваш Template ID
+          form.current,
+          "F6RZLfANJRfOeJy4-", // Замените на ваш Public Key
+        )
+        .then(
+          () => {
+            setSendSuccess(true);
+            setIsSending(false);
+            form.current?.reset();
+          },
+          (error) => {
+            setSendError(true);
+            setIsSending(false);
+            console.log("FAILED...", error.text);
+          },
+        );
+    }
+  };
 
   return (
     <section id="contact" ref={sectionRef} className="py-32 bg-card">
@@ -53,29 +87,11 @@ export function ContactSection() {
             <div className="mt-12 space-y-6">
               <div className="flex items-center gap-4">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary">
-                  <Mail className="w-5 h-5 text-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground">hello@pixelstudio.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary">
-                  <Phone className="w-5 h-5 text-foreground" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Телефон</p>
-                  <p className="text-foreground">+1 (555) 123-4567</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary">
                   <MapPin className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Локация</p>
-                  <p className="text-foreground">Сан-Франциско, Калифорния</p>
+                  <p className="text-foreground">Санкт-Петербург, Россия</p>
                 </div>
               </div>
             </div>
@@ -89,7 +105,7 @@ export function ContactSection() {
               transform: isVisible ? "translateY(0)" : "translateY(40px)",
             }}
           >
-            <form className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -101,8 +117,10 @@ export function ContactSection() {
                   <input
                     type="text"
                     id="firstName"
+                    name="from_name"
                     className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
                     placeholder="Иван"
+                    required
                   />
                 </div>
                 <div>
@@ -115,6 +133,7 @@ export function ContactSection() {
                   <input
                     type="text"
                     id="lastName"
+                    name="from_last_name"
                     className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
                     placeholder="Иванов"
                   />
@@ -131,8 +150,10 @@ export function ContactSection() {
                 <input
                   type="email"
                   id="email"
+                  name="from_email"
                   className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
                   placeholder="ivan@example.com"
+                  required
                 />
               </div>
 
@@ -145,6 +166,7 @@ export function ContactSection() {
                 </label>
                 <select
                   id="project"
+                  name="project_type"
                   className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300"
                 >
                   <option value="">Выберите тип проекта</option>
@@ -164,19 +186,30 @@ export function ContactSection() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   className="w-full px-4 py-4 rounded-xl bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Расскажите о вашем проекте..."
+                  required
                 />
               </div>
 
               <button
                 type="submit"
-                className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all duration-300 hover:opacity-90"
+                disabled={isSending}
+                className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground transition-all duration-300 hover:opacity-90 disabled:opacity-50"
               >
-                Отправить сообщение
+                {isSending ? "Отправка..." : "Отправить сообщение"}
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
+              {sendSuccess && (
+                <p className="text-green-500">Сообщение успешно отправлено!</p>
+              )}
+              {sendError && (
+                <p className="text-red-500">
+                  Ошибка при отправке. Попробуйте еще раз.
+                </p>
+              )}
             </form>
           </div>
         </div>

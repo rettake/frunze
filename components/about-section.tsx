@@ -4,9 +4,8 @@ import { useRef, useEffect, useState } from "react";
 
 const stats = [
   { value: "150+", label: "Проектов реализовано" },
-  { value: "50+", label: "Довольных клиентов" },
-  { value: "8+", label: "Лет опыта" },
-  { value: "15", label: "Человек в команде" },
+  { value: "5+", label: "Лет опыта" },
+  { value: "7", label: "Человек в команде" },
 ];
 
 function CountUpNumber({

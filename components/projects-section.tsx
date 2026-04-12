@@ -5,49 +5,48 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 import umca from "@/assets/images/umca.png";
-import beteco from "@/assets/images/beteco.png"
+import beteco from "@/assets/images/beteco.png";
 import easect from "@/assets/images/easect.png";
 import dashboard from "@/assets/images/dashboard.png";
 
 const projects = [
-  {
-    id: 1,
-    title: "Финтех дашборд",
-    category: "Веб-приложение",
-    description:
-      "Комплексная платформа финансовой аналитики с визуализацией данных в реальном времени.",
-    color: "from-blue-500/20 to-cyan-500/20",
-    image: umca,
-  },
-  {
-    id: 2,
-    title: "E-commerce платформа",
-    category: "Fullstack разработка",
-    description:
-      "Современный опыт онлайн-покупок с удобным оформлением заказов и управлением складом.",
-    color: "from-amber-500/20 to-orange-500/20",
-    image: beteco,
-  },
-  {
-    id: 3,
-    title: "Маркетинговый сайт SaaS",
-    category: "Веб-дизайн",
-    description:
-      "Лендинги с высокой конверсией, продуманной анимацией и микро-взаимодействиями.",
-    color: "from-emerald-500/20 to-teal-500/20",
-    image: dashboard,
-  },
-  {
-    id: 4,
-    title: "AI студия контента",
-    category: "Дизайн продукта",
-    description:
-      "Интуитивный интерфейс для генерации и управления контентом с помощью AI.",
-    color: "from-rose-500/20 to-pink-500/20",
-    image: easect,
-  },
+    {
+        id: 1,
+        title: "UMCA CRM",
+        category: "Веб-приложение",
+        description:
+            "CRM-система для управления лидами с интеграцией Telegram-ботов, автоматизацией обработки заявок и централизованной работой с клиентами.",
+        color: "from-blue-500/20 to-cyan-500/20",
+        image: umca,
+    },
+    {
+        id: 2,
+        title: "Beteco",
+        category: "Корпоративный сайт",
+        description:
+            "Сайт для производства изделий из архитектурного бетона с каталогом работ, акцентом на визуал и удобной навигацией для привлечения клиентов.",
+        color: "from-amber-500/20 to-orange-500/20",
+        image: beteco,
+    },
+    {
+        id: 3,
+        title: "Media Dashboard",
+        category: "Веб-приложение",
+        description:
+            "Платформа для управления медиа-сайтами: редактирование контента, аналитика, публикации и контроль нескольких проектов в одном интерфейсе.",
+        color: "from-emerald-500/20 to-teal-500/20",
+        image: dashboard,
+    },
+    {
+        id: 4,
+        title: "Easect",
+        category: "Продукт / SaaS",
+        description:
+            "Электронное меню для ресторанов с удобным управлением блюдами, категориями и быстрым доступом для клиентов через QR-коды.",
+        color: "from-rose-500/20 to-pink-500/20",
+        image: easect,
+    },
 ];
-
 
 function ProjectCard({
   project,
@@ -79,26 +78,29 @@ function ProjectCard({
         transitionDelay: `${index * 100}ms`,
       }}
     >
-      {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        ) : (
-          <div className="w-full h-full bg-secondary/50" />
-        )}
+      {/* Image block */}
+      <div className="relative aspect-[4/3] bg-secondary/30">
+        {/* inner frame */}
+        <div className="absolute inset-0 p-6 flex items-center justify-center">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-contain transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          ) : (
+            <div className="w-full h-full rounded-xl bg-secondary/50" />
+          )}
+        </div>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* subtle overlay */}
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* Gradient hover */}
+        {/* gradient hover */}
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500`}
+          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-30 transition-opacity duration-500`}
         />
       </div>
 
@@ -119,9 +121,9 @@ function ProjectCard({
             </p>
           </div>
 
-          <div className="flex-shrink-0 p-2 rounded-full border border-border bg-background/60 backdrop-blur group-hover:bg-primary group-hover:border-primary transition-all duration-300">
-            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
-          </div>
+          {/*<div className="flex-shrink-0 p-2 rounded-full border border-border bg-background/60 backdrop-blur group-hover:bg-primary group-hover:border-primary transition-all duration-300">*/}
+          {/*  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>
@@ -182,18 +184,18 @@ export function ProjectsSection() {
         </div>
 
         {/* Кнопка */}
-        <div
-          className="mt-16 text-center transition-all duration-1000 delay-500"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
-          }}
-        >
-          <button className="inline-flex items-center gap-2 text-foreground font-medium group">
-            Все проекты
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </button>
-        </div>
+        {/*<div*/}
+        {/*  className="mt-16 text-center transition-all duration-1000 delay-500"*/}
+        {/*  style={{*/}
+        {/*    opacity: isVisible ? 1 : 0,*/}
+        {/*    transform: isVisible ? "translateY(0)" : "translateY(20px)",*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <button className="inline-flex items-center gap-2 text-foreground font-medium group">*/}
+        {/*    Все проекты*/}
+        {/*    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />*/}
+        {/*  </button>*/}
+        {/*</div>*/}
       </div>
     </section>
   );

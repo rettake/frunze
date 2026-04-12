@@ -5,7 +5,7 @@ const footerLinks = {
     { label: "О нас", href: "#about" },
     { label: "Проекты", href: "#projects" },
     { label: "Услуги", href: "#services" },
-    { label: "Карьера", href: "#" },
+    // { label: "Карьера", href: "#" },
   ],
   resources: [
     { label: "Блог", href: "#" },
@@ -58,38 +58,38 @@ export function Footer() {
           </div>
 
           {/* Ресурсы */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Ресурсы</h3>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/*<div>*/}
+          {/*  <h3 className="text-sm font-semibold text-foreground">Ресурсы</h3>*/}
+          {/*  <ul className="mt-4 space-y-3">*/}
+          {/*    {footerLinks.resources.map((link) => (*/}
+          {/*      <li key={link.label}>*/}
+          {/*        <Link*/}
+          {/*          href={link.href}*/}
+          {/*          className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"*/}
+          {/*        >*/}
+          {/*          {link.label}*/}
+          {/*        </Link>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
 
           {/* Соцсети */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Связаться</h3>
-            <ul className="mt-4 space-y-3">
-              {footerLinks.social.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/*<div>*/}
+          {/*  <h3 className="text-sm font-semibold text-foreground">Связаться</h3>*/}
+          {/*  <ul className="mt-4 space-y-3">*/}
+          {/*    {footerLinks.social.map((link) => (*/}
+          {/*      <li key={link.label}>*/}
+          {/*        <Link*/}
+          {/*          href={link.href}*/}
+          {/*          className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"*/}
+          {/*        >*/}
+          {/*          {link.label}*/}
+          {/*        </Link>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
         </div>
 
         {/* Нижняя часть */}
@@ -97,20 +97,20 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Frunze Solutions. Все права защищены.
           </p>
-          <div className="flex items-center gap-6">
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              Политика конфиденциальности
-            </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              Условия использования
-            </Link>
-          </div>
+          {/*<div className="flex items-center gap-6">*/}
+          {/*  <Link*/}
+          {/*    href="#"*/}
+          {/*    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"*/}
+          {/*  >*/}
+          {/*    Политика конфиденциальности*/}
+          {/*  </Link>*/}
+          {/*  <Link*/}
+          {/*    href="#"*/}
+          {/*    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"*/}
+          {/*  >*/}
+          {/*    Условия использования*/}
+          {/*  </Link>*/}
+          {/*</div>*/}
         </div>
       </div>
     </footer>
