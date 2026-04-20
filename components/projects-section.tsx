@@ -3,59 +3,11 @@
 import { useRef, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { projects, Project } from "@/constants/projects";
 
-import umca from "@/assets/images/umca.png";
-import beteco from "@/assets/images/beteco.png";
-import easect from "@/assets/images/easect.png";
-import dashboard from "@/assets/images/dashboard.png";
-
-const projects = [
-    {
-        id: 1,
-        title: "UMCA CRM",
-        category: "Веб-приложение",
-        description:
-            "CRM-система для управления лидами с интеграцией Telegram-ботов, автоматизацией обработки заявок и централизованной работой с клиентами.",
-        color: "from-blue-500/20 to-cyan-500/20",
-        image: umca,
-    },
-    {
-        id: 2,
-        title: "Beteco",
-        category: "Корпоративный сайт",
-        description:
-            "Сайт для производства изделий из архитектурного бетона с каталогом работ, акцентом на визуал и удобной навигацией для привлечения клиентов.",
-        color: "from-amber-500/20 to-orange-500/20",
-        image: beteco,
-    },
-    {
-        id: 3,
-        title: "Media Dashboard",
-        category: "Веб-приложение",
-        description:
-            "Платформа для управления медиа-сайтами: редактирование контента, аналитика, публикации и контроль нескольких проектов в одном интерфейсе.",
-        color: "from-emerald-500/20 to-teal-500/20",
-        image: dashboard,
-    },
-    {
-        id: 4,
-        title: "Easect",
-        category: "Продукт / SaaS",
-        description:
-            "Электронное меню для ресторанов с удобным управлением блюдами, категориями и быстрым доступом для клиентов через QR-коды.",
-        color: "from-rose-500/20 to-pink-500/20",
-        image: easect,
-    },
-];
-
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -69,9 +21,10 @@ function ProjectCard({
   }, []);
 
   return (
-    <div
+    <Link
+      href={`/projects/${project.slug}`}
       ref={cardRef}
-      className="group relative overflow-hidden rounded-3xl border border-border bg-card transition-all duration-700 hover:shadow-xl"
+      className="group relative block overflow-hidden rounded-3xl border border-border bg-card transition-all duration-700 hover:shadow-xl"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(60px)",
@@ -79,28 +32,24 @@ function ProjectCard({
       }}
     >
       {/* Image block */}
-      <div className="relative aspect-[4/3] bg-secondary/30">
-        {/* inner frame */}
-        <div className="absolute inset-0 p-6 flex items-center justify-center">
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-contain transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          ) : (
-            <div className="w-full h-full rounded-xl bg-secondary/50" />
-          )}
-        </div>
+      <div className="relative h-56 sm:h-80 lg:h-[22rem] bg-secondary/10 overflow-hidden border-b border-border/50">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            className="w-full h-auto object-top transition-transform duration-700 group-hover:scale-105 origin-top"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <div className="w-full h-full bg-secondary/50" />
+        )}
 
         {/* subtle overlay */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         {/* gradient hover */}
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-30 transition-opacity duration-500`}
+          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none`}
         />
       </div>
 
@@ -121,12 +70,12 @@ function ProjectCard({
             </p>
           </div>
 
-          {/*<div className="flex-shrink-0 p-2 rounded-full border border-border bg-background/60 backdrop-blur group-hover:bg-primary group-hover:border-primary transition-all duration-300">*/}
-          {/*  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />*/}
-          {/*</div>*/}
+          <div className="flex-shrink-0 p-2 rounded-full border border-border bg-background/60 backdrop-blur group-hover:bg-primary group-hover:border-primary transition-all duration-300">
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -182,20 +131,6 @@ export function ProjectsSection() {
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-
-        {/* Кнопка */}
-        {/*<div*/}
-        {/*  className="mt-16 text-center transition-all duration-1000 delay-500"*/}
-        {/*  style={{*/}
-        {/*    opacity: isVisible ? 1 : 0,*/}
-        {/*    transform: isVisible ? "translateY(0)" : "translateY(20px)",*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <button className="inline-flex items-center gap-2 text-foreground font-medium group">*/}
-        {/*    Все проекты*/}
-        {/*    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />*/}
-        {/*  </button>*/}
-        {/*</div>*/}
       </div>
     </section>
   );

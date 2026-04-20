@@ -38,7 +38,7 @@ export function ContactSection() {
     if (form.current) {
       emailjs
         .sendForm(
-            "service_nhdke2d", // Замените на ваш Service ID
+          "service_nhdke2d", // Замените на ваш Service ID
           "template_o9zfz4k", // Замените на ваш Template ID
           form.current,
           "F6RZLfANJRfOeJy4-", // Замените на ваш Public Key

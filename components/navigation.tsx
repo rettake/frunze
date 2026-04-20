@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#projects", label: "Проекты" },
-  { href: "#services", label: "Услуги" },
-  { href: "#about", label: "О нас" },
-  { href: "#contact", label: "Контакты" },
+  { href: "/#projects", label: "Проекты" },
+  { href: "/#services", label: "Услуги" },
+  { href: "/#about", label: "О нас" },
+  { href: "/#contact", label: "Контакты" },
 ];
 
 export function Navigation() {

@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const footerLinks = {
   company: [
-    { label: "О нас", href: "#about" },
-    { label: "Проекты", href: "#projects" },
-    { label: "Услуги", href: "#services" },
+    { label: "О нас", href: "/#about" },
+    { label: "Проекты", href: "/#projects" },
+    { label: "Услуги", href: "/#services" },
     // { label: "Карьера", href: "#" },
   ],
   resources: [
@@ -35,7 +35,7 @@ export function Footer() {
               Frunze Solutions
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Премиальная веб-студия, создающая выдающиеся цифровые продукты и
+              Веб-студия, создающая выдающиеся цифровые продукты и
               пользовательский опыт.
             </p>
           </div>
